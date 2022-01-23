@@ -1,32 +1,150 @@
+/* #1 start */
+
 $main: "school";
 $child: "box";
 $language: "en"; // English
 $gap: 20px;
 
 .#{$main} {
-    padding: $gap;
-    direction: if($language == "en", ltr, rtl);
-    margin-left: $gap;
+  padding: $gap;
+  direction: if($language == "en", ltr, rtl);
+  margin-left: $gap;
+  .#{$main}-#{$child} {
+    padding: $gap / 2;
+  }
+  &:hover {
     .#{$main}-#{$child} {
-        padding: $gap / 2;
+      background-color: #eee;
     }
-    &:hover {
-        .#{$main}-#{$child}{
-            background-color: #eee;
-        }
-    }
+  }
 }
 
-// // Output
-// .school {
-//   padding: 20px;
-//   direction: ltr;
-//   margin-left: 20px;
-// }
-// .school .school-box {
-//   padding: 10px;
-// }
-// .school:hover .school-box {
-//   background-color: #eee;
-// }
+/* Output
+.school {
+  padding: 20px;
+  direction: ltr;
+  margin-left: 20px;
+}
+.school .school-box {
+  padding: 10px;
+}
+.school:hover .school-box {
+  background-color: #eee;
+}
+*/
 
+/* #1 END */
+
+/* #2 START */
+
+.content {
+  > {
+    .box {
+      padding: 15px;
+      > {
+        .title {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+  .cat {
+    padding: 15px;
+  }
+  &.premium::before {
+    content: "Premium Box";
+  }
+  &.premium:hover {
+    background-color: #eee;
+  }
+}
+
+/*  Output
+.content > .box {
+    padding: 15px;
+  }
+  .content > .box > .title {
+    font-size: 18px;
+  }
+  .content .cat {
+    padding: 15px;
+  }
+  .content.premium:before {
+    content: "Premium Box";
+  }
+  .content.premium:hover {
+    background-color: #eee;
+  }
+  */
+
+/* #2 END */
+
+/* #3 START */
+
+/* OUTPUT IN 3 DIFFERENT WAYS 
+.class > .child {
+    padding: 10px;
+  }*/
+
+// 1
+.class > {
+  .child {
+    padding: 10px;
+  }
+}
+// 2
+.class {
+  > {
+    .child {
+      padding: 10px;
+    }
+  }
+}
+// 3
+
+.class {
+  > .class {
+    padding: 10px;
+  }
+}
+
+/* #3 END */
+
+/* #4 START */
+
+.class {
+  font: {
+    weight: bold;
+    size: 20px;
+  }
+}
+
+/* OUTPUT 
+.class {
+  font-weight: bold;
+  font-size: 20px;
+}*/
+
+/* #4 END */
+/* #5 START */
+
+.parent {
+  & + .sibling {
+    margin: auto {
+      top: 10px;
+    }
+    & ~ .last {
+      padding: 10px;
+    }
+  }
+}
+/* OUTPUT
+.parent + .sibling {
+    margin: auto;
+    margin-top: 10px;
+}
+.parent + .sibling ~ .last {
+      padding: 10px;
+}
+*/
+/* #5 END */

@@ -1,0 +1,16 @@
+@import "./helpers/mixins";
+
+.media {
+  @include breakPoints(mobile) {
+    font-size: 15px;
+  }
+  @include breakPoints(small) {
+    font-size: 18px;
+  }
+  @include breakPoints(medium) {
+    font-size: 20px;
+  }
+  @include breakPoints(large) {
+    font-size: 22px;
+  }
+}
